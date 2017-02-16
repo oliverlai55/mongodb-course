@@ -7,6 +7,6 @@ describe('Validating records', () => {
     const validationResult = user.validateSync();
     const { message } = validationResult.errors.name;
 
-    assert(message === 'Name is required.');
+    assert(message === 'Name is required.'); 
   });
 });

@@ -17,9 +17,22 @@ before((done) => {
 
 
 beforeEach((done) => {
-  mongoose.connection.collections.users.drop(() => {
-    // Ready to run the next test
-    done();
-    // this tells mocha that we are done, and can proceed with mocha
+  const { users, comments, blogposts } = mongoose.connection.collections;
+  users.drop(() => {
+    comments.drop(() => {
+      blogposts.drop(() => {
+        done();
+      });
+    });
   });
 });
+
+
+// mongoose.connection.collections.users.drop(() => {
+  // Ready to run the next test
+  // done();
+  // this tells mocha that we are done, and can proceed with mocha
+// });
+
+
+// Mongoose collection calls by lower case

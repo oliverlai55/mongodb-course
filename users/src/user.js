@@ -24,6 +24,18 @@ UserSchema.virtual('postCount').get(function() {
 });
 
 
+UserSchema.pre('remove', function(next) {
+  // this === joe
+  const BlogPost = mongoose.model('blogPost');
+  
+// $in goes through all the blogposts, looks at the id, if the id is in the array
+// of this.blogPosts, will remove it
+  BlogPost.remove({ _id: { $in: this.blogPosts } })
+
+  // when it is done, goes to the next middleware
+    .then(() => next());
+});
+
 const User = mongoose.model('user', UserSchema);
 //creates collection and follows specific schema
 

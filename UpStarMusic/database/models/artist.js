@@ -16,3 +16,7 @@ const ArtistSchema = new Schema({
   retired: Boolean,
   albums: [AlbumSchema]
 });
+
+const Artist = mongoose.model('artist', ArtistSchema);
+
+module.exports = Artist;

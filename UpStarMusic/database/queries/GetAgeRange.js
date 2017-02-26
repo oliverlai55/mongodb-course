@@ -16,7 +16,7 @@ module.exports = () => {
     .find({})
     .sort({ age: -1 })
     .limit(1)
-    .then(artist => artists[0].age);
+    .then(artists => artists[0].age);
 
   return Promise.all([minQuery, maxQuery])
     .then((result) => {

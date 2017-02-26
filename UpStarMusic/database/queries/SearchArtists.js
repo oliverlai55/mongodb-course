@@ -38,6 +38,9 @@ module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
 };
 
 // results[0] is query, and [1] is ARtist.count()
+//db.artists.createIndex({ name: "text" }) CREATE index in mongo shell
+//mongo, use DB name
+// Udemy, check Index and Text Search
 
 const buildQuery = (criteria) => {
   console.log(criteria);

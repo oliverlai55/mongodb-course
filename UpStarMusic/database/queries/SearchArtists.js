@@ -20,8 +20,8 @@ module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
 
 // ES6 Interpolated Key
 // At run time, look at whatever sortProperty is, and give it a value of 1
-  console.log(criteria);
-  const query = Artist.find({})
+
+  const query = Artist.find(buildQuery(criteria))
     .sort({ [sortProperty]: 1 })
     .skip(offset)
     .limit(limit);
@@ -38,3 +38,29 @@ module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
 };
 
 // results[0] is query, and [1] is ARtist.count()
+
+const buildQuery = (criteria) => {
+  console.log(criteria);
+  const query = {};
+
+  if (criteria.name) {
+    query.$text = { $search: criteria.name };
+  }
+
+  if (criteria.age) {
+    // $gte greater or equal to
+    query.age = {
+      $gte: criteria.age.min,
+      $lte: criteria.age.max
+    };
+  }
+
+  if (criteria.yearsActive) {
+    query.yearsActive = {
+      $gte: criteria.yearsActive.min,
+      $lte: criteria.yearsActive.max
+    };
+  }
+
+  return query;
+};

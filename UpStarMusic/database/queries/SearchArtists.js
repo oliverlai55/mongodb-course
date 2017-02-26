@@ -20,6 +20,7 @@ module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
 
 // ES6 Interpolated Key
 // At run time, look at whatever sortProperty is, and give it a value of 1
+  console.log(criteria);
   const query = Artist.find({})
     .sort({ [sortProperty]: 1 })
     .skip(offset)

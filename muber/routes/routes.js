@@ -6,4 +6,6 @@ module.exports = (app) => {
   // just passing in greeting function WITHOUT calling it
   //because we call it in drivers_controller
   app.get('/api', DriversController.greeting);
+
+  app.post('/api/drivers', DriversController.create);
 };

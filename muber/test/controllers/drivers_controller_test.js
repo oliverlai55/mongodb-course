@@ -32,7 +32,7 @@ describe('Drivers controller', () => {
             .then(driver => {
               assert(driver.driving === true);
               done();
-            });
+            }); 
         });
     });
   });

@@ -15,4 +15,4 @@ beforeEach(done => {
     .then(() => drivers.ensureIndex({ 'geometry.coordinates': '2dsphere' }))
     .then(() => done())
     .catch(() => done());
-})
+});
